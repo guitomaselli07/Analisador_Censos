@@ -521,21 +521,29 @@ def estados():
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def load_data_alunos():
 
-  colunas_alunos = ['NU_ANO_CENSO', 'CO_UF', 'CO_IES', 'NO_MUNICIPIO', 'NO_CURSO', 'CO_CURSO', 'QT_VG_TOTAL', 'QT_ING', 'QT_ING_FEM', 'QT_ING_MASC', 'QT_ING_VESTIBULAR', 'QT_ING_ENEM', 'QT_ING_AVALIACAO_SERIADA', 'QT_ING_SELECAO_SIMPLIFICA', 'QT_ING_VG_REMANESC', 'QT_ING_0_17', 'QT_ING_18_24', 'QT_ING_25_29', 'QT_ING_30_34', 'QT_ING_35_39', 'QT_ING_40_49', 'QT_ING_50_59', 'QT_ING_60_MAIS', 'QT_ING_BRANCA', 'QT_ING_PRETA', 'QT_ING_PARDA', 'QT_ING_AMARELA', 'QT_ING_INDIGENA', 'QT_ING_CORND', 'QT_MAT', 'QT_MAT_FEM', 'QT_MAT_MASC', 'QT_MAT_0_17', 'QT_MAT_18_24', 'QT_MAT_25_29', 'QT_MAT_30_34', 'QT_MAT_35_39', 'QT_MAT_40_49', 'QT_MAT_50_59', 'QT_MAT_60_MAIS', 'QT_MAT_BRANCA', 'QT_MAT_PRETA', 'QT_MAT_PARDA', 'QT_MAT_AMARELA', 'QT_MAT_INDIGENA', 'QT_MAT_CORND', 'QT_CONC', 'QT_CONC_FEM', 'QT_CONC_MASC', 'QT_CONC_0_17', 'QT_CONC_18_24', 'QT_CONC_25_29', 'QT_CONC_30_34', 'QT_CONC_35_39', 'QT_CONC_40_49', 'QT_CONC_50_59', 'QT_CONC_60_MAIS', 'QT_CONC_BRANCA', 'QT_CONC_PRETA', 'QT_CONC_PARDA', 'QT_CONC_AMARELA', 'QT_CONC_INDIGENA', 'QT_CONC_CORND']
-  colunas_ies = ['CO_IES', 'SG_IES']
+  dados1 = pd.read_csv('dados1', encoding='utf8')
+  dados2 = pd.read_csv('dados2', encoding='utf8')
+  dados3 = pd.read_csv('dados3', encoding='utf8')
+  dados4 = pd.read_csv('dados4', encoding='utf8')
+  dados5 = pd.read_csv('dados5', encoding='utf8')
+  dados6 = pd.read_csv('dados6', encoding='utf8')
+  dados7 = pd.read_csv('dados7', encoding='utf8')
+  dados8 = pd.read_csv('dados8', encoding='utf8')
+  dados9 = pd.read_csv('dados9', encoding='utf8')
+  dados10 = pd.read_csv('dados10', encoding='utf8')
+  dados11 = pd.read_csv('dados11', encoding='utf8')
+  dados12 = pd.read_csv('dados12', encoding='utf8')
+  dados13 = pd.read_csv('dados13', encoding='utf8')
+  dados14 = pd.read_csc('dados14', encoding='utf8')
+  dados15 = pd.read_csc('dados15', encoding='utf8')
+  dados16 = pd.read_csc('dados16', encoding='utf8')
+  dados17 = pd.read_csc('dados17', encoding='utf8')
+  dados18 = pd.read_csc('dados18', encoding='utf8')
+  dados19 = pd.read_csc('dados19', encoding='utf8')
+  dados20 = pd.read_csc('dados20', encoding='utf8')
+  dados21 = pd.read_csc('dados21', encoding='utf8')
 
-  dados_alunos_2019 = pd.read_csv('MICRODADOS_CADASTRO_CURSOS_2019.CSV', sep = ';', encoding='ISO-8859-1', usecols = colunas_alunos)
-  dados_ies_2019 = pd.read_csv('MICRODADOS_CADASTRO_IES_2019.CSV', sep = ';', encoding='ISO-8859-1', usecols = colunas_ies)
-  dados_alunos_2020 = pd.read_csv('MICRODADOS_CADASTRO_CURSOS_2020.CSV', sep = ';', encoding='ISO-8859-1', usecols = colunas_alunos)
-  dados_ies_2020 = pd.read_csv('MICRODADOS_CADASTRO_IES_2020.CSV', sep = ';', encoding='ISO-8859-1', usecols = colunas_ies)
-  dados_alunos_2021 = pd.read_csv('MICRODADOS_CADASTRO_CURSOS_2021.CSV', sep = ';', encoding='ISO-8859-1', usecols = colunas_alunos)
-  dados_ies_2021 = pd.read_csv('MICRODADOS_CADASTRO_IES_2021.CSV', sep = ';', encoding='ISO-8859-1', usecols = colunas_ies)
-
-  dados_2019 = dados_alunos_2019.merge(dados_ies_2019, how = 'outer')
-  dados_2020 = dados_alunos_2020.merge(dados_ies_2020, how = 'outer')
-  dados_2021 = dados_alunos_2021.merge(dados_ies_2021, how = 'outer')
-
-  dados = pd.concat([dados_2019, dados_2020, dados_2021])
+  dados = pd.concat([dados1, dados2, dados3, dados4, dados5, dados6, dados7, dados8, dados9, dados10, dados11, dados12, dados13, dados14, dados15, dados16, dados17, dados18, dados19, dados20, dados21])
 
   return dados
 
