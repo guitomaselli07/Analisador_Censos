@@ -3,6 +3,7 @@ import streamlit as st
 from PIL import Image
 import pandas as pd
 
+
 def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolha_CURSO, escolha_CATEGORIA, escolha_GRAFICOS, dados):
 
   if(len(escolha_GRAFICOS) == 0):
@@ -550,7 +551,7 @@ def load_data_alunos():
 if __name__ == '__main__':
 
   imagem = Image.open('icone.png')
-  st.set_page_config(page_title='Analisador Educacional', page_icon=imagem)
+  st.set_page_config(page_title='Analisador Censos', page_icon=imagem)
   titulo_inicial = st.title('Realizando a Leitura dos Dados...')
   espaco_inicial = st.subheader('')
   descricao_inicial = st.subheader('Por favor aguarde um momento, a aplicação já irá iniciar.')
