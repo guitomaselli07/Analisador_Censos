@@ -3,15 +3,13 @@ import streamlit as st
 from PIL import Image
 import pandas as pd
 
-
 def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolha_CURSO, escolha_CATEGORIA, escolha_GRAFICOS, dados):
 
   if(len(escolha_GRAFICOS) == 0):
     st.subheader('')
     st.error('É necessária a escolha de pelo menos uma opção de gráfico. Por favor, tente novamente.')
   else:
-    if(len(escolha_GRAFICOS) > 1):
-      titulo = st.subheader('Gerando os Gráficos...')
+    
     anos = [2019, 2020, 2021]
       
     if(escolha_CATEGORIA == 'Concluintes'): 
