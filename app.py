@@ -8,7 +8,9 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
   if(len(escolha_GRAFICOS) == 0):
     st.subheader('')
     st.error('É necessária a escolha de pelo menos uma opção de gráfico. Por favor, tente novamente.')
-  else:
+  else: 
+    if(len(escolha_GRAFICOS) > 1):
+      titulo = st.subheader('...')
     
     anos = [2019, 2020, 2021]
       
@@ -453,6 +455,7 @@ def pagina_inicial(dados):
     sobre.empty()
     descricao1.empty()
     descricao2.empty()
+    st.error('Desculpa, aconteceu algum erro durante o processo. Estamos trabalhando para resolver.')
   st.sidebar.write('*Versão 4.0.0*')
 
 def estados():
