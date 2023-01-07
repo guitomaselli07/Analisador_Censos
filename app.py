@@ -5,11 +5,14 @@ import pandas as pd
 
 def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolha_CURSO, escolha_CATEGORIA, escolha_GRAFICOS, dados):
 
-  st.text(len(escolha_GRAFICOS))
   if(len(escolha_GRAFICOS) == 0):
     st.subheader('')
     st.error('É necessária a escolha de pelo menos uma opção de gráfico. Por favor, tente novamente.')
   else:
+    if(len(escolha_GRAFICOS) == 1):
+      pass
+    if(len(escolha_GRAFICOS) > 1):
+      pass
     
     anos = [2019, 2020, 2021]
       
