@@ -3,6 +3,24 @@ import streamlit as st
 from PIL import Image
 import pandas as pd
 
+def grafico_limite(maximo):
+
+  if(maximo > 0):
+    n = 10
+  if(maximo > 10):
+    n = 15
+  if(maximo >= 80):
+    n = 50
+  if(maximo >= 200):
+    n = 100
+  if(maximo >= 300):
+    n = 200
+  if(maximo >= 600):
+    n = 400
+  if(maximo >= 900):
+    n = 500
+  return n
+
 def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolha_CURSO, escolha_CATEGORIA, escolha_GRAFICOS, dados):
 
   if(len(escolha_GRAFICOS) == 0):
@@ -31,8 +49,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig1 = go.Figure(data=[go.Bar(name = '2019', x = cor_raca, y = lista[0:7], text = lista[0:7], marker_pattern_shape="/"), go.Bar(name = '2020', x = cor_raca, y = lista[7:14], text = lista[7:14], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = cor_raca, y = lista[14:21], text = lista[14:21], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig1.update_xaxes(tickfont_size=11)
-      fig1.update_yaxes(range = [0, max(lista)+20], tickfont_size=11, showgrid = False)
+      fig1.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig1.update_traces(textposition = 'outside', textfont_size=11)
       fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -56,8 +76,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig2 = go.Figure(data=[go.Bar(name = '2019', x = idades, y = lista[0:9], text = lista[0:9], marker_pattern_shape="/"), go.Bar(name = '2020', x = idades, y = lista[9:18], text = lista[9:18], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = idades, y = lista[18:27], text = lista[18:27], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig2.update_xaxes(tickfont_size=11)
-      fig2.update_yaxes(range = [0, max(lista)+20], tickfont_size=11, showgrid = False)
+      fig2.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig2.update_traces(textposition = 'outside', textfont_size=11)
       fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -75,8 +97,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig3 = go.Figure(data=[go.Bar(name = '2019', x = generos, y = lista[0:3], text = lista[0:3], marker_pattern_shape="/"), go.Bar(name = '2020', x = generos, y = lista[3:6], text = lista[3:6], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = generos, y = lista[6:9], text = lista[6:9], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig3.update_xaxes(tickfont_size=11)
-      fig3.update_yaxes(range = [0, max(lista)+20], tickfont_size=11, showgrid = False)
+      fig3.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig3.update_traces(textposition = 'outside', textfont_size=11)
       fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -139,8 +163,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig1 = go.Figure(data=[go.Bar(name = '2019', x = cor_raca, y = lista[0:7], text = lista[0:7], marker_pattern_shape="/"), go.Bar(name = '2020', x = cor_raca, y = lista[7:14], text = lista[7:14], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = cor_raca, y = lista[14:21], text = lista[14:21], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig1.update_xaxes(tickfont_size=11)
-      fig1.update_yaxes(range = [0, max(lista)+30], tickfont_size=11, showgrid = False)
+      fig1.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig1.update_traces(textposition = 'outside', textfont_size=11)
       fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -161,8 +187,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig2 = go.Figure(data=[go.Bar(name = '2019', x = formas_ingresso, y = lista[0:6], text = lista[0:6], marker_pattern_shape="/"), go.Bar(name = '2020', x = formas_ingresso, y = lista[6:12], text = lista[6:12], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = formas_ingresso, y = lista[12:18], text = lista[12:18], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig2.update_xaxes(tickfont_size=11)
-      fig2.update_yaxes(range = [0, max(lista)+30], tickfont_size=11, showgrid = False)
+      fig2.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig2.update_traces(textposition = 'outside', textfont_size=11)
       fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Formas de Ingresso', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -186,8 +214,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig3 = go.Figure(data=[go.Bar(name = '2019', x = idades, y = lista[0:9], text = lista[0:9], marker_pattern_shape="/"), go.Bar(name = '2020', x = idades, y = lista[9:18], text = lista[9:18], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = idades, y = lista[18:27], text = lista[18:27], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig3.update_xaxes(tickfont_size=11)
-      fig3.update_yaxes(range = [0, max(lista)+30], tickfont_size=11, showgrid = False)
+      fig3.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig3.update_traces(textposition = 'outside', textfont_size=11)
       fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -205,8 +235,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig4 = go.Figure(data=[go.Bar(name = '2019', x = generos, y = lista[0:3], text = lista[0:3], marker_pattern_shape="/"), go.Bar(name = '2020', x = generos, y = lista[3:6], text = lista[3:6], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = generos, y = lista[6:9], text = lista[6:9], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig4.update_xaxes(tickfont_size=11)
-      fig4.update_yaxes(range = [0, max(lista)+30], tickfont_size=11, showgrid = False)
+      fig4.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig4.update_traces(textposition = 'outside', textfont_size=11)
       fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -324,8 +356,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig1 = go.Figure(data=[go.Bar(name = '2019', x = cor_raca, y = lista[0:7], text = lista[0:7], marker_pattern_shape="/"), go.Bar(name = '2020', x = cor_raca, y = lista[7:14], text = lista[7:14], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = cor_raca, y = lista[14:21], text = lista[14:21], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig1.update_xaxes(tickfont_size=11)
-      fig1.update_yaxes(range = [0, max(lista)+200], tickfont_size=11, showgrid = False)
+      fig1.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig1.update_traces(textposition = 'outside', textfont_size=11)
       fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -349,8 +383,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig2 = go.Figure(data=[go.Bar(name = '2019', x = idades, y = lista[0:9], text = lista[0:9], marker_pattern_shape="/"), go.Bar(name = '2020', x = idades, y = lista[9:18], text = lista[9:18], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = idades, y = lista[18:27], text = lista[18:27], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig2.update_xaxes(tickfont_size=11)
-      fig2.update_yaxes(range = [0, max(lista)+200], tickfont_size=11, showgrid = False)
+      fig2.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig2.update_traces(textposition = 'outside', textfont_size=11)
       fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -368,8 +404,10 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
       fig3 = go.Figure(data=[go.Bar(name = '2019', x = generos, y = lista[0:3], text = lista[0:3], marker_pattern_shape="/"), go.Bar(name = '2020', x = generos, y = lista[3:6], text = lista[3:6], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = generos, y = lista[6:9], text = lista[6:9], marker_pattern_shape="-", marker_color='#179462')])
 
+      n = grafico_limite(max(lista))
+
       fig3.update_xaxes(tickfont_size=11)
-      fig3.update_yaxes(range = [0, max(lista)+200], tickfont_size=11, showgrid = False)
+      fig3.update_yaxes(range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
       fig3.update_traces(textposition = 'outside', textfont_size=11)
       fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
@@ -410,7 +448,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
         with tab2:
           st.plotly_chart(fig3, use_container_width=True)
         with tab3:
-          st.plotly_chart(fig2, use_container_width=True)    
+          st.plotly_chart(fig2, use_container_width=True) 
 
 def pagina_inicial(dados):
 
