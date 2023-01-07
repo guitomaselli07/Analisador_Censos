@@ -8,7 +8,11 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
   if(len(escolha_GRAFICOS) == 0):
     st.subheader('')
     st.error('É necessária a escolha de pelo menos uma opção de gráfico. Por favor, tente novamente.')
-  if(len(escolha_GRAFICOS) > 0):
+  else:
+    if(len(escolha_GRAFICOS) == 1):
+      titulo = st.subheader('Gerando o Gráfico...') 
+    if(len(escolha_GRAFICOS) > 1):
+      titulo = st.subheader('Gerando os Gráficos...')
     
     anos = [2019, 2020, 2021]
       
