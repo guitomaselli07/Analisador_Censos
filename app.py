@@ -366,17 +366,12 @@ def load_data_alunos():
   dados12 = pd.read_csv('dados12.CSV', encoding='utf8')
   dados13 = pd.read_csv('dados13.CSV', encoding='utf8')
   dados14 = pd.read_csv('dados14.CSV', encoding='utf8')
-  dados15 = pd.read_csv('dados15.CSV', encoding='utf8')
-  dados16 = pd.read_csv('dados16.CSV', encoding='utf8')
-  dados17 = pd.read_csv('dados17.CSV', encoding='utf8')
-  dados18 = pd.read_csv('dados18.CSV', encoding='utf8')
-  dados19 = pd.read_csv('dados19.CSV', encoding='utf8')
-  dados20 = pd.read_csv('dados20.CSV', encoding='utf8')
-  dados21 = pd.read_csv('dados21.CSV', encoding='utf8')
 
-  dados = pd.concat([dados1, dados2, dados3, dados4, dados5, dados6, dados7, dados8, dados9, dados10, dados11, dados12, dados13, dados14, dados15, dados16, dados17, dados18, dados19, dados20, dados21])
+  dados = pd.concat([dados1, dados2, dados3, dados4, dados5, dados6, dados7, dados8, dados9, dados10, dados11, dados12, dados13, dados14])
+  
+  dados_2018 = pd.read_csv('dados_2018.CSV', encoding='utf8')
 
-  return dados
+  return dados, dados_2018
 
 if __name__ == '__main__':
 
@@ -385,7 +380,7 @@ if __name__ == '__main__':
   titulo_inicial = st.title('Realizando a Leitura dos Dados...')
   espaco_inicial = st.subheader('')
   descricao_inicial = st.subheader('Por favor aguarde um momento, a aplicação já irá iniciar.')
-  dados = load_data_alunos()
+  dados, dados_2018 = load_data_alunos()
   titulo_inicial.empty()
   espaco_inicial.empty()
   descricao_inicial.empty()
