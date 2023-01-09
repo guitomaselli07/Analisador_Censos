@@ -354,7 +354,6 @@ def load_data_alunos():
 
   dados1 = pd.read_csv('dados1.CSV')
   dados2 = pd.read_csv('dados2.CSV')
-
   dados = pd.concat([dados1, dados2])
 
   return dados
@@ -363,11 +362,5 @@ if __name__ == '__main__':
 
   imagem = Image.open('icone.png')
   st.set_page_config(page_title='Analisador Censos', page_icon=imagem)
-  titulo_inicial = st.title('Realizando a Leitura dos Dados...')
-  espaco_inicial = st.subheader('')
-  descricao_inicial = st.subheader('Por favor aguarde um momento, a aplicação já irá iniciar.')
   dados = load_data_alunos()
-  titulo_inicial.empty()
-  espaco_inicial.empty()
-  descricao_inicial.empty()
   pagina_inicial(dados)
