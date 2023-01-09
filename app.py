@@ -248,7 +248,7 @@ def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
     with tab3:
       st.plotly_chart(fig2, use_container_width=True)  
 
-def pagina_inicial(dados, dados_2018):
+def pagina_inicial(dados):
 
   titulo = st.header('Analisador Gráfico do Censo da Educação Superior')
   espaco = st.text('')
