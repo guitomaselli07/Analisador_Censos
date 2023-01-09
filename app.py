@@ -21,7 +21,7 @@ def grafico_limite(maximo):
     n = 500
   return n
 
-def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolha_CURSO, escolha_CATEGORIA, dados):
+def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
 
   anos = [2019, 2020, 2021]
 
@@ -33,27 +33,27 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
     for i in range(0, len(anos), 1):
 
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_BRANCA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_PRETA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_PARDA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_AMARELA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_INDIGENA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_CORND'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_BRANCA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_PRETA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_PARDA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_AMARELA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_INDIGENA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_CORND'].drop_duplicates().dropna().sum()))
 
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_0_17'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_18_24'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_25_29'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_30_34'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_35_39'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_40_49'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_50_59'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_60_MAIS'].drop_duplicates().dropna().sum())) 
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_0_17'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_18_24'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_25_29'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_30_34'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_35_39'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_40_49'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_50_59'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_60_MAIS'].drop_duplicates().dropna().sum())) 
 
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_MASC'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_CONC_FEM'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_MASC'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_FEM'].drop_duplicates().dropna().sum()))
 
     n = grafico_limite(max(lista1))
 
@@ -64,7 +64,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig1.update_xaxes(tickfont_size=11)
     fig1.update_yaxes(range = [0, max(lista1)+n], tickfont_size=11, showgrid = False)
     fig1.update_traces(textposition = 'outside', textfont_size=11)
-    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))  
+    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))  
 
     idades = ['Total', 'Até 17', '18 até 24', '25 até 29', '30 até 34', '35 até 39', '40 até 49', '50 até 59', '60 ou mais']
 
@@ -73,7 +73,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig2.update_xaxes(tickfont_size=11)
     fig2.update_yaxes(range = [0, max(lista2)+n], tickfont_size=11, showgrid = False)
     fig2.update_traces(textposition = 'outside', textfont_size=11)
-    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     generos = ['Total', 'Homens', 'Mulheres']
 
@@ -82,7 +82,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig3.update_xaxes(tickfont_size=11)
     fig3.update_yaxes(range = [0, max(lista3)+n], tickfont_size=11, showgrid = False)
     fig3.update_traces(textposition = 'outside', textfont_size=11)
-    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     st.subheader('Gráficos:')
     tab1, tab2, tab3 = st.tabs(["Cor/Raça", "Gêneros", "Idades"])
@@ -91,10 +91,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     with tab2:
       st.plotly_chart(fig3, use_container_width=True)
     with tab3:
-      st.plotly_chart(fig2, use_container_width=True)  
-    button_pagina_incical = st.button('Página Inicial')
-    if(button_pagina_incical):
-      pagina_inicial()
+      st.plotly_chart(fig2, use_container_width=True)       
 
   if(escolha_CATEGORIA == 'Ingressantes'):
       
@@ -105,34 +102,34 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
     for i in range(0, len(anos), 1):
 
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_BRANCA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_PRETA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_PARDA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_AMARELA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_INDIGENA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_CORND'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_BRANCA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_PRETA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_PARDA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_AMARELA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_INDIGENA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_CORND'].drop_duplicates().dropna().sum()))
 
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_VESTIBULAR'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_ENEM'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_AVALIACAO_SERIADA'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_SELECAO_SIMPLIFICA'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_VG_REMANESC'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_VESTIBULAR'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_ENEM'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_AVALIACAO_SERIADA'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_SELECAO_SIMPLIFICA'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_VG_REMANESC'].drop_duplicates().dropna().sum()))
 
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_0_17'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_18_24'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_25_29'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_30_34'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_35_39'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_40_49'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_50_59'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_60_MAIS'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_0_17'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_18_24'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_25_29'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_30_34'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_35_39'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_40_49'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_50_59'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_60_MAIS'].drop_duplicates().dropna().sum()))
 
-      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING'].drop_duplicates().dropna().sum()))
-      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_MASC'].drop_duplicates().dropna().sum()))
-      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_ING_FEM'].drop_duplicates().dropna().sum()))
+      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].drop_duplicates().dropna().sum()))
+      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_MASC'].drop_duplicates().dropna().sum()))
+      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_FEM'].drop_duplicates().dropna().sum()))
 
     n = grafico_limite(max(lista1))
 
@@ -143,7 +140,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig1.update_xaxes(tickfont_size=11)
     fig1.update_yaxes(range = [0, max(lista1)+n], tickfont_size=11, showgrid = False)
     fig1.update_traces(textposition = 'outside', textfont_size=11)
-    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     formas_ingresso = ['Total', 'Vestibular', 'Enem', 'Avaliação<br>Seriada', 'Seleção<br>Simplificada', 'Vagas<br>Remanescentes']
 
@@ -152,7 +149,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig2.update_xaxes(tickfont_size=11)
     fig2.update_yaxes(range = [0, max(lista2)+n], tickfont_size=11, showgrid = False)
     fig2.update_traces(textposition = 'outside', textfont_size=11)
-    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Formas de Ingresso', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Formas de Ingresso', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     idades = ['Total', 'Até 17', '18 até 24', '25 até 29', '30 até 34', '35 até 39', '40 até 49', '50 até 59', '60 ou mais']
 
@@ -161,7 +158,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig3.update_xaxes(tickfont_size=11)
     fig3.update_yaxes(range = [0, max(lista3)+n], tickfont_size=11, showgrid = False)
     fig3.update_traces(textposition = 'outside', textfont_size=11)
-    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     generos = ['Total', 'Homens', 'Mulheres']
 
@@ -170,7 +167,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig4.update_xaxes(tickfont_size=11)
     fig4.update_yaxes(range = [0, max(lista4)+n], tickfont_size=11, showgrid = False)
     fig4.update_traces(textposition = 'outside', textfont_size=11)
-    fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+    fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     st.subheader('Gráficos:')
     tab1, tab2, tab3, tab4 = st.tabs(["Cor/Raça", "Formas de Ingresso", "Gêneros", "Idades"])
@@ -182,9 +179,6 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
       st.plotly_chart(fig4, use_container_width=True)
     with tab4:
       st.plotly_chart(fig3, use_container_width=True)
-    button_pagina_incical = st.button('Página Inicial')
-    if(button_pagina_incical):
-      pagina_inicial()
 
   if(escolha_CATEGORIA == 'Matriculados'):
 
@@ -194,27 +188,27 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
 
     for i in range(0, len(anos), 1):
 
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_BRANCA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_PRETA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_PARDA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_AMARELA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_INDIGENA'].drop_duplicates().dropna().sum()))
-      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_CORND'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_BRANCA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_PRETA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_PARDA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_AMARELA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_INDIGENA'].drop_duplicates().dropna().sum()))
+      lista1.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_CORND'].drop_duplicates().dropna().sum()))
 
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_0_17'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_18_24'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_25_29'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_30_34'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_35_39'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_40_49'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_50_59'].drop_duplicates().dropna().sum()))
-      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_60_MAIS'].drop_duplicates().dropna().sum())) 
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_0_17'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_18_24'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_25_29'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_30_34'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_35_39'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_40_49'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_50_59'].drop_duplicates().dropna().sum()))
+      lista2.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_60_MAIS'].drop_duplicates().dropna().sum())) 
 
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_MASC'].drop_duplicates().dropna().sum()))
-      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['CO_CURSO'] == escolha_CURSO)]['QT_MAT_FEM'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_MASC'].drop_duplicates().dropna().sum()))
+      lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_FEM'].drop_duplicates().dropna().sum()))
 
     n = grafico_limite(max(lista1))
 
@@ -225,7 +219,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig1.update_xaxes(tickfont_size=11)
     fig1.update_yaxes(range = [0, max(lista1)+n], tickfont_size=11, showgrid = False)
     fig1.update_traces(textposition = 'outside', textfont_size=11)
-    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))   
+    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))   
 
     idades = ['Total', 'Até 17', '18 até 24', '25 até 29', '30 até 34', '35 até 39', '40 até 49', '50 até 59', '60 ou mais']
 
@@ -234,7 +228,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig2.update_xaxes(tickfont_size=11)
     fig2.update_yaxes(range = [0, max(lista2)+n], tickfont_size=11, showgrid = False)
     fig2.update_traces(textposition = 'outside', textfont_size=11)
-    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     generos = ['Total', 'Homens', 'Mulheres']
 
@@ -243,7 +237,7 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
     fig3.update_xaxes(tickfont_size=11)
     fig3.update_yaxes(range = [0, max(lista3)+n], tickfont_size=11, showgrid = False)
     fig3.update_traces(textposition = 'outside', textfont_size=11)
-    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_NOME_CURSO} da {escolha_NOME_IES}<br> por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO} da {escolha_IES}<br> por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     st.subheader('Gráficos:')
     tab1, tab2, tab3 = st.tabs(["Cor/Raça", "Gêneros", "Idades"])
@@ -253,11 +247,8 @@ def grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, escolh
       st.plotly_chart(fig3, use_container_width=True)
     with tab3:
       st.plotly_chart(fig2, use_container_width=True)  
-    button_pagina_incical = st.button('Página Inicial')
-    if(button_pagina_incical):
-      pagina_inicial()
 
-def pagina_inicial(dados):
+def pagina_inicial(dados, dados_2018):
 
   titulo = st.header('Analisador Gráfico do Censo da Educação Superior')
   espaco = st.text('')
@@ -267,12 +258,9 @@ def pagina_inicial(dados):
   st.sidebar.title('Opções:')
   try:
     escolha_ESTADO = estados()
-    escolha_CIDADE = st.sidebar.selectbox('Escolha uma cidade:', (dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['QT_VG_TOTAL'] > 0)]['NO_MUNICIPIO'].drop_duplicates().sort_values().dropna()))
-    escolha_NOME_IES = st.sidebar.selectbox('Escolha uma instituição de ensino:', ((dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['NO_MUNICIPIO'] == escolha_CIDADE) & (dados['QT_VG_TOTAL'] > 0)]['SG_IES'].drop_duplicates().sort_values().dropna())))
-    escolha_IES = int(dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_NOME_IES) & (dados['NO_MUNICIPIO'] == escolha_CIDADE) & (dados['QT_VG_TOTAL'] > 0)]['CO_IES'].drop_duplicates())
-    escolha_NOME_CURSO = st.sidebar.selectbox('Escolha um curso:', (dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_NOME_IES) & (dados['NO_MUNICIPIO'] == escolha_CIDADE) & (dados['QT_VG_TOTAL'] > 0)]['NO_CURSO'].str.upper().drop_duplicates().sort_values().dropna()))
-    escolha_CURSO = (dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['CO_IES'] == escolha_IES) & (dados['NO_CURSO'] == escolha_NOME_CURSO) & (dados['NO_MUNICIPIO'] == escolha_CIDADE) & (dados['QT_VG_TOTAL'] > 0)]['CO_CURSO'].drop_duplicates())
-    if(int((dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['CO_IES'] == escolha_IES) & (dados['NO_CURSO'] == escolha_NOME_CURSO) & (dados['NO_MUNICIPIO'] == escolha_CIDADE) & (dados['QT_VG_TOTAL'] > 0)]['QT_CONC'].sum())) > 0):
+    escolha_IES = st.sidebar.selectbox('Escolha uma instituição de ensino:', ((dados[(dados['CO_UF'] == escolha_ESTADO)]['SG_IES'].drop_duplicates().sort_values().dropna())))
+    escolha_CURSO = st.sidebar.selectbox('Escolha um curso:', (dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES)]['NOME_CURSO'].drop_duplicates().sort_values().dropna()))
+    if(int((dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())) > 0):
       escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Ingressantes', 'Matriculados'))
     else:
       escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Ingressantes', 'Matriculados'))
@@ -283,7 +271,7 @@ def pagina_inicial(dados):
         sobre.empty()
         descricao1.empty()
         descricao2.empty()
-        grafico_estudantes(escolha_NOME_IES, escolha_IES, escolha_NOME_CURSO, int(escolha_CURSO), escolha_CATEGORIA, dados)
+        grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados)
   except:
     titulo.empty()
     espaco.empty()
@@ -291,7 +279,7 @@ def pagina_inicial(dados):
     descricao1.empty()
     descricao2.empty()
     st.error('Desculpa, aconteceu algum erro durante o processo. Estamos trabalhando para resolver.')
-  st.sidebar.write('*Versão 4.0.1*')
+  st.sidebar.write('*Versão 4.0.0*')
 
 def estados():
 
@@ -355,26 +343,12 @@ def estados():
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def load_data_alunos():
 
-  dados1 = pd.read_csv('dados1.CSV', encoding='utf8')
-  dados2 = pd.read_csv('dados2.CSV', encoding='utf8')
-  dados3 = pd.read_csv('dados3.CSV', encoding='utf8')
-  dados4 = pd.read_csv('dados4.CSV', encoding='utf8')
-  dados5 = pd.read_csv('dados5.CSV', encoding='utf8')
-  dados6 = pd.read_csv('dados6.CSV', encoding='utf8')
-  dados7 = pd.read_csv('dados7.CSV', encoding='utf8')
-  dados8 = pd.read_csv('dados8.CSV', encoding='utf8')
-  dados9 = pd.read_csv('dados9.CSV', encoding='utf8')
-  dados10 = pd.read_csv('dados10.CSV', encoding='utf8')
-  dados11 = pd.read_csv('dados11.CSV', encoding='utf8')
-  dados12 = pd.read_csv('dados12.CSV', encoding='utf8')
-  dados13 = pd.read_csv('dados13.CSV', encoding='utf8')
-  dados14 = pd.read_csv('dados14.CSV', encoding='utf8')
+  dados1 = pd.read_csv('dados1.CSV')
+  dados2 = pd.read_csv('dados2.CSV')
 
-  dados = pd.concat([dados1, dados2, dados3, dados4, dados5, dados6, dados7, dados8, dados9, dados10, dados11, dados12, dados13, dados14])
-  
-  dados_2018 = pd.read_csv('dados_2018.CSV', encoding='utf8')
+  dados = pd.concat([dados1, dados2])
 
-  return dados, dados_2018
+  return dados
 
 if __name__ == '__main__':
 
@@ -383,7 +357,7 @@ if __name__ == '__main__':
   titulo_inicial = st.title('Realizando a Leitura dos Dados...')
   espaco_inicial = st.subheader('')
   descricao_inicial = st.subheader('Por favor aguarde um momento, a aplicação já irá iniciar.')
-  dados, dados_2018 = load_data_alunos()
+  dados = load_data_alunos()
   titulo_inicial.empty()
   espaco_inicial.empty()
   descricao_inicial.empty()
