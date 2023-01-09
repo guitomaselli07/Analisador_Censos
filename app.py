@@ -272,7 +272,10 @@ def pagina_inicial(dados):
     escolha_IES = int(dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_NOME_IES) & (dados['NO_MUNICIPIO'] == escolha_CIDADE) & (dados['QT_VG_TOTAL'] > 0)]['CO_IES'].drop_duplicates())
     escolha_NOME_CURSO = st.sidebar.selectbox('Escolha um curso:', (dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_NOME_IES) & (dados['NO_MUNICIPIO'] == escolha_CIDADE) & (dados['QT_VG_TOTAL'] > 0)]['NO_CURSO'].str.upper().drop_duplicates().sort_values().dropna()))
     escolha_CURSO = (dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['CO_IES'] == escolha_IES) & (dados['NO_CURSO'] == escolha_NOME_CURSO) & (dados['NO_MUNICIPIO'] == escolha_CIDADE) & (dados['QT_VG_TOTAL'] > 0)]['CO_CURSO'].drop_duplicates())
-    escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Ingressantes', 'Matriculados'))
+    if(int((dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['CO_IES'] == escolha_IES) & (dados['NO_CURSO'] == escolha_NOME_CURSO) & (dados['NO_MUNICIPIO'] == escolha_CIDADE) & (dados['QT_VG_TOTAL'] > 0)]['QT_CONC'].sum())) > 0):
+      escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Ingressantes', 'Matriculados'))
+    else:
+      escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Ingressantes', 'Matriculados'))
     button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
     if(button_gerar_grafico):
         titulo.empty()
