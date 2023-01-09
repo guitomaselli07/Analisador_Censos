@@ -91,7 +91,10 @@ def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
     with tab2:
       st.plotly_chart(fig3, use_container_width=True)
     with tab3:
-      st.plotly_chart(fig2, use_container_width=True)       
+      st.plotly_chart(fig2, use_container_width=True)   
+    button_pagina_incical = st.button('Página Inicial')
+    if(button_pagina_incical):
+      pagina_inicial()
 
   if(escolha_CATEGORIA == 'Ingressantes'):
       
@@ -179,7 +182,10 @@ def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
       st.plotly_chart(fig4, use_container_width=True)
     with tab4:
       st.plotly_chart(fig3, use_container_width=True)
-
+    button_pagina_incical = st.button('Página Inicial')
+    if(button_pagina_incical):
+      pagina_inicial()
+      
   if(escolha_CATEGORIA == 'Matriculados'):
 
     lista1 = []
@@ -247,6 +253,9 @@ def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
       st.plotly_chart(fig3, use_container_width=True)
     with tab3:
       st.plotly_chart(fig2, use_container_width=True)  
+    button_pagina_incical = st.button('Página Inicial')
+    if(button_pagina_incical):
+      pagina_inicial()      
 
 def pagina_inicial(dados):
 
