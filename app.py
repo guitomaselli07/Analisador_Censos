@@ -21,6 +21,51 @@ def grafico_limite(maximo):
     n = 500
   return n
 
+def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3):
+
+  lista = []
+
+  desvinculados_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].dropna().sum()
+  transferidos_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].dropna().sum()
+  ingressantes_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
+  ingressantes_2018 = dados3[(dados3['NU_ANO_CENSO'] == 2018) & (dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
+  falecidos_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
+  falecidos_2018 = dados3[(dados3['NU_ANO_CENSO'] == 2018) & (dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
+
+  lista.append(((desvinculados_2019 + transferidos_2019) / ((ingressantes_2019 + ingressantes_2018) - (falecidos_2019 + falecidos_2018)))*100)
+
+  desvinculados_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].dropna().sum()
+  transferidos_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].dropna().sum()
+  ingressantes_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
+  ingressantes_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
+  falecidos_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
+  falecidos_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
+
+  lista.append(((desvinculados_2020 + transferidos_2020) / ((ingressantes_2020 + ingressantes_2019) - (falecidos_2020 + falecidos_2019)))*100)
+
+  desvinculados_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].dropna().sum()
+  transferidos_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].dropna().sum()
+  ingressantes_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
+  ingressantes_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
+  falecidos_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
+  falecidos_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
+
+  n = grafico_limite(max(lista))
+
+  lista.append(((desvinculados_2021 + transferidos_2021) / ((ingressantes_2021 + ingressantes_2020) - (falecidos_2021 + falecidos_2020)))*100)
+
+  anos = ['2019', '2020', '2021']
+
+  fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%', f'{lista[2]:.2f}%'], marker_pattern_shape="/" , width = 0.5)])
+
+  fig.update_xaxes(tickfont_size=11)
+  fig.update_yaxes(title_text = '%', range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
+  fig.update_traces(textposition = 'outside', textfont_size=11)
+  fig.update_layout(title_text = f'Taxa de Evasão dos Estudantes do Curso de {escolha_CURSO}<br>da {escolha_IES}')  
+
+  st.subheader('Gráfico:')
+  st.plotly_chart(fig, use_container_width=True)
+
 def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
 
   anos = [2019, 2020, 2021]
@@ -257,7 +302,7 @@ def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
     if(button_pagina_incical):
       pagina_inicial()      
 
-def pagina_inicial(dados):
+def pagina_inicial(dados, dados3):
 
   titulo = st.header('Analisador Gráfico do Censo da Educação Superior')
   espaco = st.text('')
@@ -270,17 +315,45 @@ def pagina_inicial(dados):
     escolha_IES = st.sidebar.selectbox('Escolha uma instituição de ensino:', ((dados[(dados['CO_UF'] == escolha_ESTADO)]['SG_IES'].drop_duplicates().sort_values().dropna())))
     escolha_CURSO = st.sidebar.selectbox('Escolha um curso:', (dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES)]['NOME_CURSO'].drop_duplicates().sort_values().dropna()))
     if(int((dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())) > 0):
-      escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Ingressantes', 'Matriculados'))
+      escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Evadidos', 'Ingressantes', 'Matriculados'))
+      if(escolha_CATEGORIA == 'Evadidos'):
+        button_gerar_grafico = st.sidebar.button('Gerar Gráfico')
+        if(button_gerar_grafico):
+            titulo.empty()
+            espaco.empty()
+            sobre.empty()
+            descricao1.empty()
+            descricao2.empty()
+            grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3)
+      else:
+        button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
+        if(button_gerar_grafico):
+            titulo.empty()
+            espaco.empty()
+            sobre.empty()
+            descricao1.empty()
+            descricao2.empty()
+            grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados)
     else:
-      escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Ingressantes', 'Matriculados'))
-    button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
-    if(button_gerar_grafico):
-        titulo.empty()
-        espaco.empty()
-        sobre.empty()
-        descricao1.empty()
-        descricao2.empty()
-        grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados)
+      escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Evadidos', 'Ingressantes', 'Matriculados'))
+      if(escolha_CATEGORIA == 'Evadidos'):
+        button_gerar_grafico = st.sidebar.button('Gerar Gráfico')
+        if(button_gerar_grafico):
+            titulo.empty()
+            espaco.empty()
+            sobre.empty()
+            descricao1.empty()
+            descricao2.empty()
+            grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3)
+      else:
+        button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
+        if(button_gerar_grafico):
+            titulo.empty()
+            espaco.empty()
+            sobre.empty()
+            descricao1.empty()
+            descricao2.empty()
+            grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados)
   except:
     titulo.empty()
     espaco.empty()
@@ -352,15 +425,18 @@ def estados():
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def load_data_alunos():
 
-  dados1 = pd.read_csv('dados1.CSV')
-  dados2 = pd.read_csv('dados2.CSV')
-  dados = pd.concat([dados1, dados2])
+  dados1 = pd.read_csv('dados1.CSV', encoding='latin-1')
+  dados2 = pd.read_csv('dados2.CSV', encoding='latin-1')
 
-  return dados
+  dados = pd.concat([dados1, dados2])
+  
+  dados3 = pd.read_csv('dados3.CSV', encoding='latin-1')
+
+  return dados, dados3
 
 if __name__ == '__main__':
 
   imagem = Image.open('icone.png')
   st.set_page_config(page_title='Analisador Censos', page_icon=imagem)
-  dados = load_data_alunos()
-  pagina_inicial(dados)
+  dados, dados3 = load_data_alunos()
+  pagina_inicial(dados, dados3)
