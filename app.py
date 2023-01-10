@@ -66,8 +66,8 @@ def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3):
   st.subheader('Gráfico:')
   st.plotly_chart(fig, use_container_width=True)
   button_pagina_incical = st.button('Página Inicial')
-    if(button_pagina_incical):
-      pagina_inicial()
+  if(button_pagina_incical):
+    pagina_inicial()
 
 def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
 
