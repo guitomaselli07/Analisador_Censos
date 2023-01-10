@@ -54,11 +54,11 @@ def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3):
 
   lista.append(((desvinculados_2021 + transferidos_2021) / ((ingressantes_2021 + ingressantes_2020) - (falecidos_2021 + falecidos_2020)))*100)
 
-  anos = [2019, 2020, 2021]
+  anos = ['2019', '2020', '2021']
 
   fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%', f'{lista[2]:.2f}%'], marker_pattern_shape="/" , width = 0.5)])
 
-  fig.update_xaxes(tickfont_size=11, autorange = False)
+  fig.update_xaxes(tickfont_size=11)
   fig.update_yaxes(title_text = '%', range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
   fig.update_traces(textposition = 'outside', textfont_size=11)
   fig.update_layout(title_text = f'Taxa de Evasão dos Estudantes do Curso de {escolha_CURSO}<br>da {escolha_IES}')  
