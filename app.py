@@ -106,7 +106,7 @@ def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
 
     fig1 = go.Figure(data=[go.Bar(name = '2019', x = cor_raca, y = lista1[0:7], text = lista1[0:7], marker_pattern_shape="/"), go.Bar(name = '2020', x = cor_raca, y = lista1[7:14], text = lista1[7:14], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = cor_raca, y = lista1[14:21], text = lista1[14:21], marker_pattern_shape="-", marker_color='#179462')])
 
-    fig1.update_xaxes(tickfont_size=11)
+    fig1.update_xaxes(tickfont_size=11, autorrange = False)
     fig1.update_yaxes(range = [0, max(lista1)+n], tickfont_size=11, showgrid = False)
     fig1.update_traces(textposition = 'outside', textfont_size=11)
     fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_IES} por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))  
