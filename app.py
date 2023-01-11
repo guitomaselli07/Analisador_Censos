@@ -318,17 +318,28 @@ def pagina_inicial(dados, dados3):
     escolha_IES = st.sidebar.selectbox('Escolha uma instituição de ensino:', ((dados[(dados['CO_UF'] == escolha_ESTADO)]['SG_IES'].drop_duplicates().sort_values().dropna())))
     escolha_CURSO = st.sidebar.selectbox('Escolha um curso:', (dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES)]['NOME_CURSO'].drop_duplicates().sort_values().dropna()))
     if(int((dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())) > 0):
-      escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Evadidos', 'Ingressantes', 'Matriculados'))
-      if(escolha_CATEGORIA == 'Evadidos'):
-        button_gerar_grafico = st.sidebar.button('Gerar Gráfico')
-        if(button_gerar_grafico):
-            titulo.empty()
-            espaco.empty()
-            sobre.empty()
-            descricao1.empty()
-            descricao2.empty()
-            grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3)
+      if(dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['NU_ANO_CENSO'] == 2019)]['QT_ING'].sum() > 0 and dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['NU_ANO_CENSO'] == 2020)]['QT_ING'].sum() > 0 and dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['NU_ANO_CENSO'] == 2021)]['QT_ING'].sum() > 0):
+        escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Evadidos', 'Ingressantes', 'Matriculados'))
+        if(escolha_CATEGORIA == 'Evadidos'):
+          button_gerar_grafico = st.sidebar.button('Gerar Gráfico')
+          if(button_gerar_grafico):
+              titulo.empty()
+              espaco.empty()
+              sobre.empty()
+              descricao1.empty()
+              descricao2.empty()
+              grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3)
+        else:
+          button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
+          if(button_gerar_grafico):
+              titulo.empty()
+              espaco.empty()
+              sobre.empty()
+              descricao1.empty()
+              descricao2.empty()
+              grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados)
       else:
+        escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Ingressantes', 'Matriculados'))
         button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
         if(button_gerar_grafico):
             titulo.empty()
@@ -338,25 +349,36 @@ def pagina_inicial(dados, dados3):
             descricao2.empty()
             grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados)
     else:
-      escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Evadidos', 'Ingressantes', 'Matriculados'))
-      if(escolha_CATEGORIA == 'Evadidos'):
-        button_gerar_grafico = st.sidebar.button('Gerar Gráfico')
-        if(button_gerar_grafico):
+      if(dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['NU_ANO_CENSO'] == 2019)]['QT_ING'].sum() > 0 and dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['NU_ANO_CENSO'] == 2020)]['QT_ING'].sum() > 0 and dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['NU_ANO_CENSO'] == 2021)]['QT_ING'].sum() > 0):
+        escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Evadidos', 'Ingressantes', 'Matriculados'))
+        if(escolha_CATEGORIA == 'Evadidos'):
+          button_gerar_grafico = st.sidebar.button('Gerar Gráfico')
+          if(button_gerar_grafico):
             titulo.empty()
             espaco.empty()
             sobre.empty()
             descricao1.empty()
             descricao2.empty()
             grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3)
-      else:
-        button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
-        if(button_gerar_grafico):
+        else:
+          button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
+          if(button_gerar_grafico):
             titulo.empty()
             espaco.empty()
             sobre.empty()
             descricao1.empty()
             descricao2.empty()
             grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados)
+      else:
+        escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Ingressantes', 'Matriculados'))
+        button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
+        if(button_gerar_grafico):
+          titulo.empty()
+          espaco.empty()
+          sobre.empty()
+          descricao1.empty()
+          descricao2.empty()
+          grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados)
   except:
     titulo.empty()
     espaco.empty()
@@ -364,7 +386,7 @@ def pagina_inicial(dados, dados3):
     descricao1.empty()
     descricao2.empty()
     st.error('Desculpa, aconteceu algum erro durante o processo. Estamos trabalhando para resolver.')
-  st.sidebar.write('*Versão 4.0.0*')
+  st.sidebar.write('*Versão 4.2.0*')
 
 def estados():
 
