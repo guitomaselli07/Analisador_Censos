@@ -56,7 +56,7 @@ def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3):
 
   anos = ['2019', '2020', '2021']
 
-  fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%', f'{lista[2]:.2f}%'], marker_pattern_shape="/" , width = 0.5)])
+  fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%', f'{lista[2]:.2f}%'], marker_pattern_shape="/" , width = 0.45)])
 
   fig.update_xaxes(tickfont_size=11)
   fig.update_yaxes(title_text = '%', range = [0, max(lista)+n], tickfont_size=11, showgrid = False)
