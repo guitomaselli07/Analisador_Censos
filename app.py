@@ -451,7 +451,7 @@ def load_data_alunos():
 
   dados = pd.concat([dados1, dados2])
   
-  dados3 = pd.read_csv('dados3.CSV', encoding='latin-1')
+  dados3 = pd.read_csv('dados2018.CSV', encoding='latin-1')
 
   return dados, dados3
 
