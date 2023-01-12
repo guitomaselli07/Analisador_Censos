@@ -22,8 +22,9 @@ def grafico_limite(maximo):
   return n
 
 def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados, dados3):
-  
-  st.text(dados3.columns)
+
+
+
 
   lista = []
 
