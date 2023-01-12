@@ -22,15 +22,13 @@ def grafico_limite(maximo):
   return n
 
 def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados, dados3):
-  
-  st.text('oi')
 
   lista = []
 
-  MAT_2019 = (dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
-  ING_2019 = (dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].sum())
-  MAT_2018 = (dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
-  CONC_2018 = (dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())
+  st.text(dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
+  st.text(dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].sum())
+  st.text(dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
+  st.text(dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())
   
   st.text((1 - ((MAT_2019 - ING_2019)/(MAT_2018 - CONC_2018)))*100)
   
