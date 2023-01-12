@@ -23,9 +23,6 @@ def grafico_limite(maximo):
 
 def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados, dados3):
 
-
-
-
   lista = []
 
   MAT_2019 = (dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
