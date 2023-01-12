@@ -21,38 +21,32 @@ def grafico_limite(maximo):
     n = 500
   return n
 
-def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3):
+def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados, dados3):
 
   lista = []
 
-  desvinculados_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].dropna().sum()
-  transferidos_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].dropna().sum()
-  ingressantes_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
-  ingressantes_2018 = dados3[(dados3['NU_ANO_CENSO'] == 2018) & (dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
-  falecidos_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
-  falecidos_2018 = dados3[(dados3['NU_ANO_CENSO'] == 2018) & (dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
-
-  lista.append(((desvinculados_2019 + transferidos_2019) / ((ingressantes_2019 + ingressantes_2018) - (falecidos_2019 + falecidos_2018)))*100)
-
-  desvinculados_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].dropna().sum()
-  transferidos_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].dropna().sum()
-  ingressantes_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
-  ingressantes_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
-  falecidos_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
-  falecidos_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
-
-  lista.append(((desvinculados_2020 + transferidos_2020) / ((ingressantes_2020 + ingressantes_2019) - (falecidos_2020 + falecidos_2019)))*100)
-
-  desvinculados_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].dropna().sum()
-  transferidos_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].dropna().sum()
-  ingressantes_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
-  ingressantes_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].dropna().sum()
-  falecidos_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
-  falecidos_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].dropna().sum()
+  MAT_2019 =(dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
+  ING_2019 = (dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].sum())
+  MAT_2018 = (dados_2018[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
+  CONC_2018 =(dados_2018[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())
+  
+  lista.append((1 - ((MAT_2019 - ING_2019)/(MAT_2018 - CONC_2018)))*100)
+  
+  MAT_2020 =(dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
+  ING_2020 = (dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].sum())
+  MAT_2019 =(dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
+  CONC_2019 = (dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())
+  
+  lista.append((1 - ((MAT_2020 - ING_2020)/(MAT_2019 - CONC_2019)))*100)
+  
+  MAT_2021 =(dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
+  ING_2021 = (dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].sum())
+  MAT_2020 =(dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
+  CONC_2020 = (dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())
+  
+  lista.append((1 - ((MAT_2021 - ING_2021)/(MAT_2020 - CONC_2020)))*100)
 
   n = grafico_limite(max(lista))
-
-  lista.append(((desvinculados_2021 + transferidos_2021) / ((ingressantes_2021 + ingressantes_2020) - (falecidos_2021 + falecidos_2020)))*100)
 
   anos = ['2019', '2020', '2021']
 
@@ -328,7 +322,7 @@ def pagina_inicial(dados, dados3):
               sobre.empty()
               descricao1.empty()
               descricao2.empty()
-              grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3)
+              grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados, dados3)
         else:
           button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
           if(button_gerar_grafico):
@@ -359,7 +353,7 @@ def pagina_inicial(dados, dados3):
             sobre.empty()
             descricao1.empty()
             descricao2.empty()
-            grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados3)
+            grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados, dados3)
         else:
           button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
           if(button_gerar_grafico):
