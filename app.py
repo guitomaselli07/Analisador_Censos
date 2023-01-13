@@ -68,6 +68,8 @@ def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados, dados3):
   lista.append(float(((desvinculados_2021 + transferidos_2021)/(ingressantes_2021_2020 - falecidos_2021_2020))*100))
 
   anos = ['2019', '2020', '2021']
+  
+  st.text(lista)
 
   fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%', f'{lista[2]:.2f}%'], marker_pattern_shape="/" , width = 0.45)])
 
@@ -325,8 +327,6 @@ def pagina_inicial(dados, dados3):
   sobre = st.subheader('Sobre:')
   descricao1 = st.markdown('O site realiza análises gráficas dos dados do Censo da Educação Superior, providos pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira, comparando a quantidade de estudantes entre concluintes, evadidos, ingressantes e matriculados dos cursos e instituições de ensino superior do Brasil.')
   descricao2 = st.markdown('Desenvolvido por Guilherme Tomaselli Borchardt, junto ao grupo de Iniciação Científica sobre Evasão Escolar, orientado pela professora Isabela Gasparini e pertencente à Universidade do Estado de Santa Catarina (UDESC - CCT).')
-  st.text(dados.shape)
-  st.text(dados3.shape)
   st.sidebar.title('Opções:')
   try:
     escolha_ESTADO = estados()
