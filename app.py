@@ -25,28 +25,47 @@ def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados, dados3):
 
   lista = []
 
-  MAT_2019 = (dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
-  ING_2019 = (dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].sum())
-  MAT_2018 = (dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
-  CONC_2018 = (dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())
-  
-  lista.append((1 - ((MAT_2019 - ING_2019)/(MAT_2018 - CONC_2018)))*100)
-  
-  MAT_2020 =( dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
-  ING_2020 = (dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].sum())
-  MAT_2019 =(dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
-  CONC_2019 = (dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())
-  
-  lista.append((1 - ((MAT_2020 - ING_2020)/(MAT_2019 - CONC_2019)))*100)
-  
-  MAT_2021 = (dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
-  ING_2021 = (dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].sum())
-  MAT_2020 = (dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum())
-  CONC_2020 = (dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())
-  
-  lista.append((1 - ((MAT_2021 - ING_2021)/(MAT_2020 - CONC_2020)))*100)
+  desvinculados_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum()
+  transferidos_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+  ingressantes_2019_2018 = sum([dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANCADA'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum(),
+              dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+              dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum(),
+              dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()])
+  falecidos_2019_2018 = sum([dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum(), dados3[(dados3['SG_IES'] == escolha_IES) & (dados3['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()])
 
-  n = grafico_limite(max(lista))
+  lista.append(float(((desvinculados_2019 + transferidos_2019)/(ingressantes_2019_2018 - falecidos_2019_2018))*100))
+
+  desvinculados_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum()
+  transferidos_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+  ingressantes_2020_2019 = sum([dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANCADA'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()])
+  falecidos_2020_2019 = sum([dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum(), dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()])
+  
+  lista.append(float(((desvinculados_2020 + transferidos_2020)/(ingressantes_2020_2019 - falecidos_2020_2019))*100))
+
+  desvinculados_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum()
+  transferidos_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+  ingressantes_2021_2020 = sum([dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANCADA'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum(),
+              dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()])
+  falecidos_2021_2020 = sum([dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum(), dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()])
+  
+  lista.append(float(((desvinculados_2021 + transferidos_2021)/(ingressantes_2021_2020 - falecidos_2021_2020))*100))
 
   anos = ['2019', '2020', '2021']
 
@@ -306,6 +325,8 @@ def pagina_inicial(dados, dados3):
   sobre = st.subheader('Sobre:')
   descricao1 = st.markdown('O site realiza análises gráficas dos dados do Censo da Educação Superior, providos pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira, comparando a quantidade de estudantes entre concluintes, evadidos, ingressantes e matriculados dos cursos e instituições de ensino superior do Brasil.')
   descricao2 = st.markdown('Desenvolvido por Guilherme Tomaselli Borchardt, junto ao grupo de Iniciação Científica sobre Evasão Escolar, orientado pela professora Isabela Gasparini e pertencente à Universidade do Estado de Santa Catarina (UDESC - CCT).')
+  st.text(dados.shape)
+  st.text(dados3.shape)
   st.sidebar.title('Opções:')
   try:
     escolha_ESTADO = estados()
@@ -449,7 +470,7 @@ def load_data_alunos():
 
   dados = pd.concat([dados1, dados2])
   
-  dados3 = pd.read_csv('dados2018.CSV', encoding='latin-1')
+  dados3 = pd.read_csv('dados3.CSV', encoding='latin-1')
 
   return dados, dados3
 
