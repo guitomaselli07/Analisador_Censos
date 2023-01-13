@@ -325,8 +325,6 @@ def grafico_estudantes(escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados):
       pagina_inicial()      
 
 def pagina_inicial(dados):
-  
-  st.text(dados.shape)
 
   titulo = st.header('Analisador Gráfico do Censo da Educação Superior')
   espaco = st.text('')
