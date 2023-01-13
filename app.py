@@ -465,8 +465,8 @@ def estados():
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def load_data_alunos():
 
-  dados1 = pd.read_csv('dados1.CSV', encoding='latin-1')
-  dados2 = pd.read_csv('dados2.CSV', encoding='latin-1')
+  dados1 = pd.read_csv('dados_parte1.CSV', encoding='latin-1')
+  dados2 = pd.read_csv('dados_parte2.CSV', encoding='latin-1')
 
   dados = pd.concat([dados1, dados2])
   
