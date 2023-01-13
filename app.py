@@ -66,6 +66,8 @@ def grafico_estudantes_evadidos(escolha_IES, escolha_CURSO, dados, dados3):
   falecidos_2021_2020 = sum([dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum(), dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()])
   
   lista.append(float(((desvinculados_2021 + transferidos_2021)/(ingressantes_2021_2020 - falecidos_2021_2020))*100))
+  
+  n = grafico_limite(max(lista))
 
   anos = ['2019', '2020', '2021']
 
