@@ -26,7 +26,7 @@ def grafico_estudantes_evadidos(escolha_SG_IES, escolha_IES, escolha_CURSO, dado
   lista = []
 
   desvinculados_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum()
-  transferidos_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+  transferidos_2019 = dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum()
   ingressantes_2019_2018 = sum([dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum(),
               dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANCADA'].sum(),
               dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum(),
@@ -36,13 +36,12 @@ def grafico_estudantes_evadidos(escolha_SG_IES, escolha_IES, escolha_CURSO, dado
               dados[(dados['NU_ANO_CENSO'] == 2018) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum(),
               dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum(),
               dados[(dados['NU_ANO_CENSO'] == 2018) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()])
-
   falecidos_2019_2018 = sum([dados[(dados['NU_ANO_CENSO'] == 2019) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum(), dados[(dados['NU_ANO_CENSO'] == 2018) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()])
 
   lista.append(float(((desvinculados_2019 + transferidos_2019)/(ingressantes_2019_2018 - falecidos_2019_2018))*100))
 
   desvinculados_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum()
-  transferidos_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+  transferidos_2020 = dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum()
   ingressantes_2020_2019 = sum([dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum(),
               dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANCADA'].sum(),
               dados[(dados['NU_ANO_CENSO'] == 2020) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum(),
@@ -57,7 +56,7 @@ def grafico_estudantes_evadidos(escolha_SG_IES, escolha_IES, escolha_CURSO, dado
   lista.append(float(((desvinculados_2020 + transferidos_2020)/(ingressantes_2020_2019 - falecidos_2020_2019))*100))
 
   desvinculados_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum()
-  transferidos_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum(),
+  transferidos_2021 = dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum()
   ingressantes_2021_2020 = sum([dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT'].sum(),
               dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANCADA'].sum(),
               dados[(dados['NU_ANO_CENSO'] == 2021) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_DESVINCULADO'].sum(),
