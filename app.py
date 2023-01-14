@@ -405,7 +405,10 @@ def pagina_inicial(dados):
     sobre.empty()
     descricao1.empty()
     descricao2.empty()
-    st.error('Desculpa, aconteceu algum erro durante o processo. Estamos trabalhando para resolver.')
+    st.error('Desculpa, ocorreu algum problema com os dados selecionados.')
+    button_pagina_incical = st.button('Página Inicial')
+    if(button_pagina_incical):
+      pagina_inicial() 
   st.sidebar.write('*Versão 4.2.0*')
 
 def estados():
