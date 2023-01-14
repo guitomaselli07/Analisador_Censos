@@ -334,8 +334,8 @@ def pagina_inicial(dados):
   st.sidebar.title('Opções:')
   try:
     escolha_ESTADO = estados()
-    escolha_IES = st.sidebar.selectbox('Escolha uma instituição de ensino:', (dados[(dados['NU_ANO_CENSO'] > 2018) & (dados['CO_UF'] == escolha_ESTADO)]['SG_IES'].drop_duplicates().sort_values().dropna()))
-    escolha_CURSO = st.sidebar.selectbox('Escolha um curso:', (dados[(dados['NU_ANO_CENSO'] > 2018) & (dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES)]['NOME_CURSO'].drop_duplicates().sort_values().dropna()))
+    escolha_IES = st.sidebar.selectbox('Escolha uma instituição de ensino:', (dados[(dados['NU_ANO_CENSO'] > 2018) & (dados['CO_UF'] == escolha_ESTADO)]['SG_IES'].drop_duplicates().sort_values()))
+    escolha_CURSO = st.sidebar.selectbox('Escolha um curso:', (dados[(dados['NU_ANO_CENSO'] > 2018) & (dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES)]['NOME_CURSO'].drop_duplicates().sort_values()))
     if(int((dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())) > 0):
       if(dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['NU_ANO_CENSO'] == 2019)]['QT_MAT'].sum() > 0 and dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['NU_ANO_CENSO'] == 2020)]['QT_MAT'].sum() > 0 and dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['NU_ANO_CENSO'] == 2021)]['QT_MAT'].sum() > 0):
         escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Evadidos', 'Ingressantes', 'Matriculados'))
