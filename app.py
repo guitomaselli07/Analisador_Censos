@@ -400,15 +400,7 @@ def pagina_inicial(dados):
           descricao2.empty()
           grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEGORIA, dados)
   except:
-    titulo.empty()
-    espaco.empty()
-    sobre.empty()
-    descricao1.empty()
-    descricao2.empty()
-    st.error('Desculpa, ocorreu algum problema com os dados selecionados.')
-    button_pagina_incical = st.button('Página Inicial')
-    if(button_pagina_incical):
-      pagina_inicial() 
+    st.sidebar.error('Desculpa, ocorreu algum problema com os dados selecionados.')
   st.sidebar.write('*Versão 4.2.0*')
 
 def estados():
