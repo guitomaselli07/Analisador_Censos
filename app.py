@@ -320,7 +320,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig3.update_traces(textposition = 'outside', textfont_size=11)
     fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
-    situacoes = ['Total', 'Cursandos', 'Matrículas<br>Trancada', 'Desvinculados', 'Transferidos', 'Formados', 'Falecidos']
+    situacoes = ['Total', 'Cursandos', 'Matrículas<br>Trancadas', 'Desvinculados', 'Transferidos', 'Formados', 'Falecidos']
 
     fig4 = go.Figure(data=[go.Bar(name = '2019', x = situacoes, y = lista4[0:7], text = lista4[0:7], marker_pattern_shape="/"), go.Bar(name = '2020', x = situacoes, y = lista4[7:14], text = lista4[7:14], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = situacoes, y = lista4[14:21], text = lista4[14:21], marker_pattern_shape="-", marker_color='#179462')])
 
