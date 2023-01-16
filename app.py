@@ -96,6 +96,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     lista1 = []
     lista2 = []
     lista3 = []
+    lista4 = []
 
     for i in range(0, len(anos), 1):
 
@@ -120,6 +121,13 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
       lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum()))
       lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_MASC'].sum()))
       lista3.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_FEM'].sum()))
+      
+      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_RESERVA_VAGA'].sum()))
+      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_RVREDEPUBLICA'].sum()))
+      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_RVETNICO'].sum()))
+      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_RVPDEF'].sum()))
+      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_RVSOCIAL_RF'].sum()))
+      lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_RVOUTROS'].sum()))
 
     n = grafico_limite(max(lista1))
 
@@ -150,14 +158,25 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig3.update_traces(textposition = 'outside', textfont_size=11)
     fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
+    reserva_vagas = ['Total', 'Rede Pública', 'Étnica', 'Deficientes', 'Cunho Social/<br>Renda Familiar', 'Outros']
+
+    fig4 = go.Figure(data=[go.Bar(name = '2019', x = reserva_vagas, y = lista4[0:6], text = lista4[0:6], marker_pattern_shape="/"), go.Bar(name = '2020', x = reserva_vagas, y = lista4[6:12], text = lista4[6:12], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = reserva_vagas, y = lista4[12:18], text = lista4[12:18], marker_pattern_shape="-", marker_color='#179462')])
+
+    fig4.update_xaxes(tickfont_size=11)
+    fig4.update_yaxes(range = [0, max(lista4)+5], tickfont_size=11, showgrid = False)
+    fig4.update_traces(textposition = 'outside', textfont_size=11)
+    fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participam do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+
     st.subheader('Gráficos:')
-    tab1, tab2, tab3 = st.tabs(["Cor/Raça", "Gêneros", "Idades"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Cor/Raça", "Gêneros", "Idades", "Reserva de Vagas"])
     with tab1:
       st.plotly_chart(fig1, use_container_width=True)
     with tab2:
       st.plotly_chart(fig3, use_container_width=True)
     with tab3:
       st.plotly_chart(fig2, use_container_width=True)   
+    with tab4:
+      st.plotly_chart(fig4, use_container_width=True)
     button_pagina_incical = st.button('Página Inicial')
     if(button_pagina_incical):
       pagina_inicial()
@@ -168,6 +187,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     lista2 = []
     lista3 = []
     lista4 = []
+    lista5 = []
 
     for i in range(0, len(anos), 1):
 
@@ -199,6 +219,13 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
       lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING'].sum()))
       lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_MASC'].sum()))
       lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_FEM'].sum()))
+      
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_RESERVA_VAGA'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_RVREDEPUBLICA'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_RVETNICO'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_RVPDEF'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_RVSOCIAL_RF'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_RVOUTROS'].sum()))
 
     n = grafico_limite(max(lista1))
 
@@ -238,8 +265,17 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig4.update_traces(textposition = 'outside', textfont_size=11)
     fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
+    reserva_vagas = ['Total', 'Rede Pública', 'Étnica', 'Deficientes', 'Cunho Social/<br>Renda Familiar', 'Outros']
+
+    fig5 = go.Figure(data=[go.Bar(name = '2019', x = reserva_vagas, y = lista5[0:6], text = lista5[0:6], marker_pattern_shape="/"), go.Bar(name = '2020', x = reserva_vagas, y = lista5[6:12], text = lista5[6:12], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = reserva_vagas, y = lista5[12:18], text = lista5[12:18], marker_pattern_shape="-", marker_color='#179462')])
+
+    fig5.update_xaxes(tickfont_size=11)
+    fig5.update_yaxes(range = [0, max(lista5)+15], tickfont_size=11, showgrid = False)
+    fig5.update_traces(textposition = 'outside', textfont_size=11)
+    fig5.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participam do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+
     st.subheader('Gráficos:')
-    tab1, tab2, tab3, tab4 = st.tabs(["Cor/Raça", "Formas de Ingresso", "Gêneros", "Idades"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Cor/Raça", "Formas de Ingresso", "Gêneros", "Idades", "Reserva de Vagas"])
     with tab1:
       st.plotly_chart(fig1, use_container_width=True)
     with tab2:
@@ -248,6 +284,8 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
       st.plotly_chart(fig4, use_container_width=True)
     with tab4:
       st.plotly_chart(fig3, use_container_width=True)
+    with tab5:
+      st.plotly_chart(fig5, use_container_width=True)
     button_pagina_incical = st.button('Página Inicial')
     if(button_pagina_incical):
       pagina_inicial()
@@ -258,6 +296,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     lista2 = []
     lista3 = []
     lista4 = []
+    lista5 = []
 
     for i in range(0, len(anos), 1):
 
@@ -290,6 +329,13 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
       lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_TRANSFERIDO'].sum()))
       lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum()))
       lista4.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_SIT_FALECIDO'].sum()))
+      
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_RESERVA_VAGA'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_RVREDEPUBLICA'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_RVETNICO'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_RVPDEF'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_RVSOCIAL_RF'].sum()))
+      lista5.append(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_RVOUTROS'].sum()))
 
     n = grafico_limite(max(lista1))
 
@@ -329,8 +375,17 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig4.update_traces(textposition = 'outside', textfont_size=11)
     fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Situações', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
+    reserva_vagas = ['Total', 'Rede Pública', 'Étnica', 'Deficientes', 'Cunho Social/<br>Renda Familiar', 'Outros']
+
+    fig5 = go.Figure(data=[go.Bar(name = '2019', x = reserva_vagas, y = lista5[0:6], text = lista5[0:6], marker_pattern_shape="/"), go.Bar(name = '2020', x = reserva_vagas, y = lista5[6:12], text = lista5[6:12], marker_pattern_shape="x", marker_color='#f63366'), go.Bar(name = '2021', x = reserva_vagas, y = lista5[12:18], text = lista5[12:18], marker_pattern_shape="-", marker_color='#179462')])
+
+    fig5.update_xaxes(tickfont_size=11)
+    fig5.update_yaxes(range = [0, max(lista5)+20], tickfont_size=11, showgrid = False)
+    fig5.update_traces(textposition = 'outside', textfont_size=11)
+    fig5.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participam do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+
     st.subheader('Gráficos:')
-    tab1, tab2, tab3, tab4 = st.tabs(["Cor/Raça", "Gêneros", "Idades", "Situações"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Cor/Raça", "Gêneros", "Idades", "Reserva de Vagas", "Situações"])
     with tab1:
       st.plotly_chart(fig1, use_container_width=True)
     with tab2:
@@ -338,6 +393,8 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     with tab3:
       st.plotly_chart(fig2, use_container_width=True)  
     with tab4:
+      st.plotly_chart(fig5, use_container_width=True) 
+    with tab5:
       st.plotly_chart(fig4, use_container_width=True) 
     button_pagina_incical = st.button('Página Inicial')
     if(button_pagina_incical):
@@ -486,8 +543,9 @@ def load_data_alunos():
 
   dados1 = pd.read_csv('dados1.CSV', encoding='latin-1')
   dados2 = pd.read_csv('dados2.CSV', encoding='latin-1')
+  dados3 = pd.read_csv('dados3.CSV', encoding='latin-1')
 
-  dados = pd.concat([dados1, dados2])
+  dados = pd.concat([dados1, dados2, dados3])
 
   return dados
 
