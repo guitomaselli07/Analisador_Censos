@@ -165,7 +165,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig4.update_xaxes(tickfont_size=11)
     fig4.update_yaxes(range = [0, max(lista4)+5], tickfont_size=11, showgrid = False)
     fig4.update_traces(textposition = 'outside', textfont_size=11)
-    fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participam do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+    fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participaram do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     st.subheader('Gráficos:')
     tab1, tab2, tab3, tab4 = st.tabs(["Cor/Raça", "Gêneros", "Idades", "Reserva de Vagas"])
