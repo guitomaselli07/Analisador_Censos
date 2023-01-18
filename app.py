@@ -276,7 +276,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig4.update_traces(textposition = 'outside', textfont_size=11)
     fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
-    if(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_RESERVA_VAGA'].sum()) < 1):
+    if(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_RESERVA_VAGA'].sum()) < 1):
 
       st.subheader('Gráficos:')
       tab1, tab2, tab3, tab4 = st.tabs(["Cor/Raça", "Formas de Ingresso", "Gêneros", "Idades"])
@@ -407,7 +407,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig4.update_traces(textposition = 'outside', textfont_size=11)
     fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Situações', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
-    if(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_RESERVA_VAGA'].sum()) < 1):
+    if(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_RESERVA_VAGA'].sum()) < 1):
 
       st.subheader('Gráficos:')
       tab1, tab2, tab3, tab4 = st.tabs(["Cor/Raça", "Gêneros", "Idades", "Situações"])
