@@ -544,9 +544,9 @@ def pagina_inicial(dados):
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def load_data_alunos():
 
-  dados1 = pd.read_csv('dados1.CSV', encoding='latin-1')
-  dados2 = pd.read_csv('dados2.CSV', encoding='latin-1')
-  dados3 = pd.read_csv('dados3.CSV', encoding='latin-1')
+  dados1 = pd.read_csv('dados01.CSV', encoding='latin-1')
+  dados2 = pd.read_csv('dados02.CSV', encoding='latin-1')
+  dados3 = pd.read_csv('dados03.CSV', encoding='latin-1')
 
   dados = pd.concat([dados1, dados2, dados3])
 
