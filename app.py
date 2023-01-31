@@ -184,7 +184,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
       fig4.update_xaxes(tickfont_size=11)
       fig4.update_yaxes(range = [0, max(lista4)+5], tickfont_size=11, showgrid = False)
       fig4.update_traces(textposition = 'outside', textfont_size=11)
-      fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participam do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
+      fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participaram do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
       st.subheader('Gráficos:')
       tab1, tab2, tab3, tab4 = st.tabs(["Cor/Raça", "Gêneros", "Idades", "Reserva de Vagas"])
@@ -467,7 +467,7 @@ def pagina_inicial(dados):
   espaco = st.text('')
   sobre = st.subheader('Sobre:')
   descricao1 = st.markdown('O site realiza análises gráficas dos dados do Censo da Educação Superior, providos pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira, comparando a quantidade de estudantes entre concluintes, evadidos, ingressantes e matriculados dos cursos e instituições de ensino superior do Brasil.')
-  descricao2 = st.markdown('Desenvolvido por Guilherme Tomaselli Borchardt, junto ao grupo de Iniciação Científica sobre Evasão Escolar, orientado pela professora Isabela Gasparini e pertencente à Universidade do Estado de Santa Catarina (UDESC - CCT).')
+  descricao2 = st.markdown('Desenvolvido por Guilherme Tomaselli Borchardt, junto ao grupo de Iniciação Científica sobre Evasão Escolar, orientado pela professora Dra. Isabela Gasparini e pertencente à Universidade do Estado de Santa Catarina (UDESC - CCT).')
   st.sidebar.title('Opções:')
   try:
     escolha_NOME_ESTADO = st.sidebar.selectbox('Escolha um estado:', (dados['NO_UF'].drop_duplicates().sort_values()))
