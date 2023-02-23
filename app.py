@@ -130,7 +130,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig1.update_xaxes(tickfont_size=11)
     fig1.update_yaxes(range = [0, max(lista1)+n], tickfont_size=11, showgrid = False)
     fig1.update_traces(textposition = 'outside', textfont_size=11)
-    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers')) 
+    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     idades = ['Total', 'Até 17', '18 até 24', '25 até 29', '30 até 34', '35 até 39', '40 até 49', '50 até 59', '60 ou mais']
 
@@ -139,7 +139,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig2.update_xaxes(tickfont_size=11)
     fig2.update_yaxes(range = [0, max(lista2)+n], tickfont_size=11, showgrid = False)
     fig2.update_traces(textposition = 'outside', textfont_size=11)
-    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     generos = ['Total', 'Homens', 'Mulheres']
 
@@ -148,7 +148,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig3.update_xaxes(tickfont_size=11)
     fig3.update_yaxes(range = [0, max(lista3)+n], tickfont_size=11, showgrid = False)
     fig3.update_traces(textposition = 'outside', textfont_size=11)
-    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     if(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC_RESERVA_VAGA'].sum()) < 1):
 
@@ -184,7 +184,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
       fig4.update_xaxes(tickfont_size=11)
       fig4.update_yaxes(range = [0, max(lista4)+5], tickfont_size=11, showgrid = False)
       fig4.update_traces(textposition = 'outside', textfont_size=11)
-      fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participaram do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+      fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participaram do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
       st.subheader('Gráficos:')
       tab1, tab2, tab3, tab4 = st.tabs(["Cor/Raça", "Gêneros", "Idades", "Reserva de Vagas"])
@@ -247,7 +247,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig1.update_xaxes(tickfont_size=11)
     fig1.update_yaxes(range = [0, max(lista1)+n], tickfont_size=11, showgrid = False)
     fig1.update_traces(textposition = 'outside', textfont_size=11)
-    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     formas_ingresso = ['Total', 'Vestibular', 'Enem', 'Avaliação<br>Seriada', 'Seleção<br>Simplificada', 'Vagas<br>Remanescentes']
 
@@ -256,7 +256,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig2.update_xaxes(tickfont_size=11)
     fig2.update_yaxes(range = [0, max(lista2)+n], tickfont_size=11, showgrid = False)
     fig2.update_traces(textposition = 'outside', textfont_size=11)
-    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Formas de Ingresso', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Formas de Ingresso', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     idades = ['Total', 'Até 17', '18 até 24', '25 até 29', '30 até 34', '35 até 39', '40 até 49', '50 até 59', '60 ou mais']
 
@@ -265,7 +265,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig3.update_xaxes(tickfont_size=11)
     fig3.update_yaxes(range = [0, max(lista3)+n], tickfont_size=11, showgrid = False)
     fig3.update_traces(textposition = 'outside', textfont_size=11)
-    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     generos = ['Total', 'Homens', 'Mulheres']
 
@@ -274,7 +274,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig4.update_xaxes(tickfont_size=11)
     fig4.update_yaxes(range = [0, max(lista4)+n], tickfont_size=11, showgrid = False)
     fig4.update_traces(textposition = 'outside', textfont_size=11)
-    fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+    fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     if(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_ING_RESERVA_VAGA'].sum()) < 1):
 
@@ -312,7 +312,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
       fig5.update_xaxes(tickfont_size=11)
       fig5.update_yaxes(range = [0, max(lista5)+15], tickfont_size=11, showgrid = False)
       fig5.update_traces(textposition = 'outside', textfont_size=11)
-      fig5.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participam do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+      fig5.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participam do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
       st.subheader('Gráficos:')
       tab1, tab2, tab3, tab4, tab5 = st.tabs(["Cor/Raça", "Formas de Ingresso", "Gêneros", "Idades", "Reserva de Vagas"])
@@ -378,7 +378,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig1.update_xaxes(tickfont_size=11)
     fig1.update_yaxes(range = [0, max(lista1)+n], tickfont_size=11, showgrid = False)
     fig1.update_traces(textposition = 'outside', textfont_size=11)
-    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers')) 
+    fig1.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Cor/Raça', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     idades = ['Total', 'Até 17', '18 até 24', '25 até 29', '30 até 34', '35 até 39', '40 até 49', '50 até 59', '60 ou mais']
 
@@ -387,7 +387,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig2.update_xaxes(tickfont_size=11)
     fig2.update_yaxes(range = [0, max(lista2)+n], tickfont_size=11, showgrid = False)
     fig2.update_traces(textposition = 'outside', textfont_size=11)
-    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+    fig2.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Idades', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     generos = ['Total', 'Homens', 'Mulheres']
 
@@ -396,7 +396,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig3.update_xaxes(tickfont_size=11)
     fig3.update_yaxes(range = [0, max(lista3)+n], tickfont_size=11, showgrid = False)
     fig3.update_traces(textposition = 'outside', textfont_size=11)
-    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+    fig3.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Gêneros', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     situacoes = ['Total', 'Cursandos', 'Matrículas<br>Trancadas', 'Desvinculados', 'Transferidos', 'Formados', 'Falecidos']
 
@@ -405,7 +405,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
     fig4.update_xaxes(tickfont_size=11)
     fig4.update_yaxes(range = [0, max(lista4)+n], tickfont_size=11, showgrid = False)
     fig4.update_traces(textposition = 'outside', textfont_size=11)
-    fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Situações', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+    fig4.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} por Situações', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
     if(int(dados[(dados['NU_ANO_CENSO'] == anos[i]) & (dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_MAT_RESERVA_VAGA'].sum()) < 1):
 
@@ -443,7 +443,7 @@ def grafico_estudantes(escolha_SG_IES, escolha_IES, escolha_CURSO, escolha_CATEG
       fig5.update_xaxes(tickfont_size=11)
       fig5.update_yaxes(range = [0, max(lista5)+20], tickfont_size=11, showgrid = False)
       fig5.update_traces(textposition = 'outside', textfont_size=11)
-      fig5.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participam do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1, itemclick = 'toggleothers'))
+      fig5.update_layout(title_text = f'Quantidade de Estudantes {escolha_CATEGORIA} do Curso de {escolha_CURSO}<br>da {escolha_SG_IES} que Participam do Programa de Reserva de Vagas', legend=dict(yanchor = 'top', y = 1, xanchor = 'right', x = 1))
 
       st.subheader('Gráficos:')
       tab1, tab2, tab3, tab4, tab5 = st.tabs(["Cor/Raça", "Gêneros", "Idades", "Reserva de Vagas", "Situações"])
