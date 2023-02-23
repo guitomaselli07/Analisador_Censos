@@ -541,7 +541,7 @@ def pagina_inicial(dados):
     st.sidebar.error('Desculpa, ocorreu algum problema com os dados selecionados.')
   st.sidebar.write('*Versão 4.2.0*')
   
-@st.cache(allow_output_mutation=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def load_data_alunos():
 
   dados1 = pd.read_csv('dados01.CSV', encoding='latin-1')
