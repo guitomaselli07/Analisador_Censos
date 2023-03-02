@@ -25,7 +25,7 @@ def grafico_estudantes_evadidos(escolha_SG_IES, escolha_IES, escolha_CURSO, dado
 
   lista = []
 
-  anos = dados[(dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates()
+  anos = dados[(dados['CO_IES'] == escolha_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values()
   anos = anos.to_list()
   anos.remove(anos[0])
 
@@ -573,7 +573,7 @@ def pagina_inicial(dados):
               descricao2.empty()
               grafico_estudantes_evadidos(escolha_SG_IES, escolha_IES, escolha_CURSO, dados)
         else:
-          escolha_ANOS = st.sidebar.multiselect('Escolha quais anos deseja analisar:', dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna(), default = dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna().min(), help = 'É possível selecionar no máximo três anos por vez.')
+          escolha_ANOS = st.sidebar.multiselect('Escolha quais anos deseja analisar:', dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna(), default = dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna().min())
           if(len(escolha_ANOS) > 0 and len(escolha_ANOS) < 4):       
             button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
             if(button_gerar_grafico):
@@ -587,7 +587,7 @@ def pagina_inicial(dados):
             st.sidebar.error('Por favor, selecione entre um e três anos.')               
       else:
         escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Ingressantes', 'Matriculados'))
-        escolha_ANOS = st.sidebar.multiselect('Escolha quais anos deseja analisar:', dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna(), default = dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna().min(), help = 'É possível selecionar no máximo três anos por vez.')
+        escolha_ANOS = st.sidebar.multiselect('Escolha quais anos deseja analisar:', dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna(), default = dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna().min())
         if(len(escolha_ANOS) > 0 and len(escolha_ANOS) < 4):
           button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
           if(button_gerar_grafico):
@@ -612,7 +612,7 @@ def pagina_inicial(dados):
             descricao2.empty()
             grafico_estudantes_evadidos(escolha_SG_IES, escolha_IES, escolha_CURSO, dados)
         else:
-          escolha_ANOS = st.sidebar.multiselect('Escolha quais anos deseja analisar:', dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna(), default = dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna().min(), help = 'É possível selecionar no máximo três anos por vez.')
+          escolha_ANOS = st.sidebar.multiselect('Escolha quais anos deseja analisar:', dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna(), default = dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna().min())
           if(len(escolha_ANOS) > 0 and len(escolha_ANOS) < 4):
             button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
             if(button_gerar_grafico):
@@ -626,7 +626,7 @@ def pagina_inicial(dados):
             st.sidebar.error('Por favor, selecione entre um e três anos.')          
       else:
         escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Ingressantes', 'Matriculados'))
-        escolha_ANOS = st.sidebar.multiselect('Escolha quais anos deseja analisar:', dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna(), default = dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna().min(), help = 'É possível selecionar no máximo três anos por vez.')
+        escolha_ANOS = st.sidebar.multiselect('Escolha quais anos deseja analisar:', dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna(), default = dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['NU_ANO_CENSO'].drop_duplicates().sort_values().dropna().min())
         if(len(escolha_ANOS) > 0 and len(escolha_ANOS) < 4):
           button_gerar_grafico = st.sidebar.button('Gerar Gráficos')
           if(button_gerar_grafico):
