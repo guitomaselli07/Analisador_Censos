@@ -47,23 +47,19 @@ def grafico_estudantes_evadidos(escolha_SG_IES, escolha_IES, escolha_CURSO, dado
 
     lista.append(float(((desvinculados + transferidos)/(ingressantes - falecidos))*100))
 
-  if(len(anos) == 2):
-
-    fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%'], marker_pattern_shape="/", width = 0.45)])
-
-  if(len(anos) == 3):
+  if(len(lista) == 3):
 
     fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%', f'{lista[2]:.2f}%'], marker_pattern_shape="/", width = 0.45)])
 
-  if(len(anos) == 4):
+  if(len(lista) == 4):
 
     fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%', f'{lista[2]:.2f}%', f'{lista[3]:.2f}%'], marker_pattern_shape="/", width = 0.45)])
 
-  if(len(anos) == 5):
+  if(len(lista) == 5):
 
     fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%', f'{lista[2]:.2f}%', f'{lista[3]:.2f}%', f'{lista[4]:.2f}%'], marker_pattern_shape="/", width = 0.45)])
 
-  if(len(anos) == 6):
+  if(len(lista) == 6):
 
     fig = go.Figure([go.Bar(x = anos, y = lista, text = [f'{lista[0]:.2f}%', f'{lista[1]:.2f}%', f'{lista[2]:.2f}%', f'{lista[3]:.2f}%', f'{lista[4]:.2f}%', f'{lista[5]:.2f}%'], marker_pattern_shape="/", width = 0.45)])
   
