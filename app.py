@@ -562,7 +562,7 @@ def pagina_inicial(dados):
     escolha_CURSO = st.sidebar.selectbox('Escolha um curso:', (dados[(dados['NU_ANO_CENSO'] >= 2015) & (dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES)]['NOME_CURSO'].drop_duplicates().sort_values().dropna()))
     if(int((dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO)]['QT_CONC'].sum())) > 0):
       if(dados[(dados['CO_UF'] == escolha_ESTADO) & (dados['SG_IES'] == escolha_SG_IES) & (dados['NOME_CURSO'] == escolha_CURSO) & (dados['QT_MAT'] > 0)]['NU_ANO_CENSO'].count() >= 4):
-      escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Evadidos', 'Ingressantes', 'Matriculados'))
+        escolha_CATEGORIA = st.sidebar.selectbox('Escolha o que deseja analisar:', ('Concluintes', 'Evadidos', 'Ingressantes', 'Matriculados'))
         if(escolha_CATEGORIA == 'Evadidos'):
           button_gerar_grafico = st.sidebar.button('Gerar Gráfico')
           if(button_gerar_grafico):
